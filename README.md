@@ -1,7 +1,7 @@
 # IntroProgramming-Labs
 Lab work for Introduction to Programming
 
-Introduction to Programming - Lab Activities
+Introduction to Programming - Lab Activities - Chris Petrucelli
 ============================================
 
 
