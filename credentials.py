@@ -11,8 +11,8 @@ def name():
     # get user's first and last names
     global first
     global last
-    first = input("Enter your first name: ")
-    last = input("Enter your last name: ")
+    first = input("Enter your first name: ").lower()
+    last = input("Enter your last name: ").lower()
     fullname = [first, last]
     return fullname
 
@@ -24,21 +24,26 @@ def uname(names):
     # ask user to create a new password
 
 def password():
-    global passwd
     passwd = input("Create a new password: ")
-    while True:
-        if len(passwd) < 8:
+    while passwordStr(passwd) == True:
+        passwd = input("Create a new password: ")
+   
+def passwordStr(passwd):
+    if len(passwd) < 8 or passwd.lower() == passwd or passwd.upper() == passwd:
             print("Fool of a Took! That password is feeble!")
-            passwd = input("Create a new password: ")
-        else:
-            print("The force is strong in this one…")
-            print("Account configured. Your new email address is",
-            uname + "@marist.edu")
-            break
+            return True
+            
+    else:
+        print("The force is strong in this one…")
+        print("Account configured. Your new email address is",
+        uname + "@marist.edu")
+        return False
+        
+        
         
 def main():
     names = name()
     uname(names)
-    password()
+    userPass = password()
 
 main()
