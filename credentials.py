@@ -1,26 +1,44 @@
 # CMPT 120 Intro to Programming
 # Lab #5 – Working with Strings and Functions
-# Author: Your Name Here
-# Created: YYYY-MM-DD
-def main():
+# Author: Christopher Petrucelli
+# Created: 2017-09-29
+first = "John"
+last = "Doe"
+uname = "smitty.warbenjagermanjenson"
+passwd = "uhhh"
+
+def name():
     # get user's first and last names
+    global first
+    global last
     first = input("Enter your first name: ")
     last = input("Enter your last name: ")
-    # TODO modify this to generate a Marist-style username
-    uname = first + "." + last
+    fullname = [first, last]
+    return fullname
+
+def uname(names):
+    global uname
+    uname = names[0] + "." + names[1]
+    # testing print(uname)
     
     # ask user to create a new password
+
+def password():
+    global passwd
     passwd = input("Create a new password: ")
-    # TODO modify this to ensure the password has at least 8 characters
     while True:
         if len(passwd) < 8:
             print("Fool of a Took! That password is feeble!")
             passwd = input("Create a new password: ")
         else:
             print("The force is strong in this one…")
+            print("Account configured. Your new email address is",
+            uname + "@marist.edu")
             break
         
-    print("Account configured. Your new email address is",
-    uname + "@marist.edu")
+def main():
+    names = name()
+    uname(names)
+    password()
 
 main()
