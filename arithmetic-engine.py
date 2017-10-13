@@ -32,8 +32,7 @@ def engine():
             answer = num1 / num2
             print(answer)
         else:
-            print("That was not a valid command!")
-            quit()
+            raise Exception("ERROR: Invalid command '" + cmd + "'! Exiting...")
 
 def end():
     print("Thanks for stoppin' by!")
