@@ -1,5 +1,5 @@
 #Arithmetic Engine
-
+import math
 #Show Intro
 def intro():
     print("This is the Arithmetic Engine. This program accepts a user command (add, mult, diff, quot, quit) and two numbers and calculates the correct command with those given numbers")
@@ -11,8 +11,12 @@ def engine():
         if cmd == "quit":
             break
 
-        num1 = int(input("Enter the first number: "))
-        num2 = int(input("Enter the second number: "))
+        try:
+           num1 = int(input("Enter the first number: "))
+           num2 = int(input("Enter the second number: "))
+        except:
+            print("You must enter a valid number")
+            continue
 
         answer = 0
         if cmd == "add":
