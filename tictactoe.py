@@ -49,15 +49,31 @@ def hasBlanks(board):
     return False
                 #if no square is blank, return false
 
+def checkWin(board):
+    for row in board:
+        if row == [1, 1, 1]:
+            print("Player 1 Wins!")
+            return False
+        elif row == [2, 2, 2]:
+            print("Player 2 Wins!")
+            return False
+    if board[0][0] == 1 and board[1][0] == 1 and board[2][0] == 1:
+        print("Player 1 Wins")
+        return False
+    elif board[0][0] == 2 and board[1][0] == 2 and board[2][0] == 2:
+        print("Player 2 Wins")
+        return False
+    return True
+
 def main():
     board = [[0, 0, 0],
              [0, 0, 0],
              [0, 0, 0]]
     player = 1
-    while hasBlanks(board):
+    while checkWin(board):
         printBoard(board)
         row,col = getPlayerMove()
         markBoard(board, row, col, player)
         player = player % 2 + 1 #switch player for next turn
-
+    printBoard(board)
 main()
