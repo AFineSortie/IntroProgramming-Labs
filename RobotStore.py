@@ -42,10 +42,10 @@ class Product:
         self.quantity = quantity
     def numStock(self, qtyWant):
         answer = self.quantity - qtyWant
-        if answer > 0:
-            print("We have that many in stock!")
+        if answer >= 0:
+            return True
         else:
-            print("We don't have that many!")
+            return False
     def totalCost(self, qtyBuy):
         price = qtyBuy * self.price
         return price
@@ -66,7 +66,30 @@ def printStock():
         if products[i].quantity > 0:
             print(str(i + 1) + ")", products[i].name, "$", products[i].price)
 
-printStock()
+def main():
+    cash = float(input("How much money do you have? $"))
+    while cash > 0:
+        printStock()
+
+        vals = input("\nEnter the product ID and quantity you wish to buy: ").split(" ")
+        if vals[0] == "quit":
+            break
+        prodID = int(vals[0])
+        count = int(vals[1])
+
+        if products[prodID - 1].numStock(count):
+            if cash >= products[prodID - 1].totalCost(count):
+                products[prodID - 1].removeQty(count)
+                cash -= products[prodID - 1].price * count
+                print("\nYou purchased", count, products[prodID - 1].name + ".")
+                print("\nYou have $", cash, "remaining.")
+            else:
+                print("\nSorry, you cannot afford that product.")
+        else:
+            print("\nSorry we are sold out of", products[prodID - 1].name)
+                
+
+main()
 
 
 
