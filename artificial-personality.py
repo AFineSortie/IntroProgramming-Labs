@@ -1,8 +1,11 @@
 # Author: Chris Petrucelli
 # 03/11/2017
 # Artificial Personality
+
+from graphics import *
+
 def intro():
-    print("\nHey there, my name is boigis")
+    print("\nHey there, my name is Boigis")
     # Tell the user what to input
     print("\nYou can interact with me in a few ways, with the commands, 'reward', 'punish', 'threaten', and 'joke'.")
 
@@ -43,6 +46,14 @@ def response(currEmot):
 
    
 def main():
+
+    app = GraphWin("Artificial Personality", 500, 200)
+    app.setCoords(0, 0, 10, 10)
+
+    Text(Point(5,8), "Hey there, my name is Boigis!").draw(app)
+    Text(Point(5,6), "You can interact with me in a few ways").draw(app)
+    Text(Point(5,5), "Using 'reward', 'punish', 'threaten', and 'joke'").draw(app)
+    
     #Rows
     anger = 0
     disgust = 1
