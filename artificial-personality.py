@@ -4,15 +4,17 @@
 
 from graphics import *
 
-def intro():
-    print("\nHey there, my name is Boigis")
+#def intro():
+#    print("\nHey there, my name is Boigis")
     # Tell the user what to input
-    print("\nYou can interact with me in a few ways, with the commands, 'reward', 'punish', 'threaten', and 'joke'.")
+#    print("\nYou can interact with me in a few ways, with the commands, 'reward', 'punish', 'threaten', and 'joke'.")
 
-def lookup(matrix, currEmot):
-    cmd = input("\nEnter a command: ").lower()
+def lookup(matrix, currEmot, app, inputBox):
+    while app.getKey() != "Return": pass
+    cmd = str(inputBox.getText()).lower()
     if cmd == "reward":
         cmd = 0
+        Text(Point(5,3), "it work").draw(app)
     elif cmd == "punish":
         cmd = 1
     elif cmd == "threaten":
@@ -47,13 +49,18 @@ def response(currEmot):
    
 def main():
 
-    app = GraphWin("Artificial Personality", 500, 200)
+    app = GraphWin("Artificial Personality", 500, 300)
     app.setCoords(0, 0, 10, 10)
 
     Text(Point(5,8), "Hey there, my name is Boigis!").draw(app)
     Text(Point(5,6), "You can interact with me in a few ways").draw(app)
     Text(Point(5,5), "Using 'reward', 'punish', 'threaten', and 'joke'").draw(app)
-    
+
+
+    inputBox = Entry(Point(2,3), 8)
+    inputBox.draw(app)
+
+
     #Rows
     anger = 0
     disgust = 1
@@ -77,9 +84,8 @@ def main():
         [3, 1, 2, 3]]
 
     currEmot = 3
-    intro()
 
     while True:
-        currEmot = response(lookup(matrix, currEmot))
+        currEmot = response(lookup(matrix, currEmot, app, inputBox))
     
 main()
