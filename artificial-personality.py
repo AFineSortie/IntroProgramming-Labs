@@ -4,17 +4,13 @@
 
 from graphics import *
 
-#def intro():
-#    print("\nHey there, my name is Boigis")
-    # Tell the user what to input
-#    print("\nYou can interact with me in a few ways, with the commands, 'reward', 'punish', 'threaten', and 'joke'.")
-
 def lookup(matrix, currEmot, app, inputBox):
+    global output
     while app.getKey() != "Return": pass
     cmd = str(inputBox.getText()).lower()
+    inputBox.setText("")
     if cmd == "reward":
         cmd = 0
-        Text(Point(5,3), "it work").draw(app)
     elif cmd == "punish":
         cmd = 1
     elif cmd == "threaten":
@@ -28,19 +24,22 @@ def lookup(matrix, currEmot, app, inputBox):
    # print(cmd)
     return currEmot
 
-def response(currEmot):
+def response(app, currEmot):
+    global output
+    output.setText("")
     if currEmot == 0:
-        print("\nI hate you!")
+        output = Text(Point(6,3), "I hate you!").draw(app)
     elif currEmot == 1:
-        print("\nYou're awful...")
+        output = Text(Point(6,3), "You're awful...").draw(app)
     elif currEmot == 2:
-        print("\nYou're scaring me!")
+        output = Text(Point(6,3), "You're scaring me!").draw(app)
     elif currEmot == 3:
-        print("\nYou're the best!")
+        output = Text(Point(6,3), "You're the best!").draw(app)
     elif currEmot == 4:
-        print("\nThat's not very nice...")
+        output = Text(Point(6,3), "That's not very nice...").draw(app)
     elif currEmot == 5:
-        print("\nI wasn't expecting that!")
+        output = Text(Point(6,3), "I wasn't expecting that!").draw(app)
+
     return currEmot
 
 
@@ -84,8 +83,10 @@ def main():
         [3, 1, 2, 3]]
 
     currEmot = 3
+    global output
+    output = Text(Point(6,3), "").draw(app)
 
     while True:
-        currEmot = response(lookup(matrix, currEmot, app, inputBox))
+        currEmot = response(app, lookup(matrix, currEmot, app, inputBox))
     
 main()
